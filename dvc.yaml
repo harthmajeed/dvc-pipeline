@@ -20,7 +20,7 @@ stages:
       - features
     outs:
       - ./archive/train.joblib
-      - ./archive.test.joblib
+      - ./archive/test.joblib
   train:
     cmd: python ./train.py
     deps:
@@ -41,4 +41,4 @@ stages:
     params:
       - evaluate
     outs:
-      - ./archive.results.yaml
+      - ./archive/results.yaml
