@@ -1,4 +1,4 @@
-import sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression
 from omegaconf import OmegaConf
 import joblib
 import pandas as pd
@@ -6,7 +6,7 @@ import pandas as pd
 def train(config):
     print("Training")
     train_inputs = joblib.load(config.features.train_features_save_path)
-    train_outputs = pd.read_csv(config.data.train_csv_save_path)["labels"].values
+    train_outputs = pd.read_csv(config.data.train_csv_save_path)["label"].values
 
     penalty = config.train.penalty
     C = config.train.C
@@ -15,7 +15,7 @@ def train(config):
     model = LogisticRegression(penalty=penalty, C=C, solver=solver)
     model.fit(train_inputs, train_outputs)
 
-    joblib.dump(moodel, config.train.model_save_path)
+    joblib.dump(model, config.train.model_save_path)
 
 
 if __name__ == "__main__":

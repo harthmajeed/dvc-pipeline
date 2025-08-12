@@ -10,7 +10,7 @@ features:
   test_features_save_path: ./archive/test.joblib
 
 train:
-  penalty: 12
+  penalty: l2
   C: 1.0
   solver: lbfgs
   model_save_path: ./archive/model.joblib
